@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 const categories = [
-  { icon: "🎨", title: "페인트", desc: "페인트 제조용 화학원료" },
-  { icon: "🖋️", title: "잉크", desc: "잉크 제조용 화학원료" },
-  { icon: "🧴", title: "플라스틱", desc: "플라스틱 가공용 화학원료" },
-  { icon: "⚙️", title: "고무", desc: "고무 제조용 화학원료" },
+  { id: "paint", icon: "🎨", title: "페인트", desc: "페인트 제조용 화학원료" },
+  { id: "ink", icon: "🖋️", title: "잉크", desc: "잉크 제조용 화학원료" },
+  { id: "plastic", icon: "🧴", title: "플라스틱", desc: "플라스틱 가공용 화학원료" },
+  { id: "rubber", icon: "⚙️", title: "고무", desc: "고무 제조용 화학원료" },
 ];
 
 export default function Home() {
@@ -37,14 +37,15 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
             {categories.map((c) => (
-              <div
-                key={c.title}
+              <Link
+                key={c.id}
+                href={`/products#${c.id}`}
                 className="rounded-lg border border-brand-border bg-white p-9 text-center transition-all hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="mb-4 text-4xl">{c.icon}</div>
                 <h3 className="mb-2 text-lg font-bold text-brand-navy">{c.title}</h3>
                 <p className="text-sm text-brand-text-light">{c.desc}</p>
-              </div>
+              </Link>
             ))}
           </div>
           <div className="mt-10 text-center">
